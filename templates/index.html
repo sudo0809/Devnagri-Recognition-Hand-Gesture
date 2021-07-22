@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Video Streaming</title>
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="/static/main.css" />
+  </head>
+  <body>
+    <h1>Live Streaming</h1>
+    <div class="hero">
+      <div class="vid-stream">
+        <img src="{{ url_for('video') }}" />
+      </div>
+      <form method="post" action="{{ url_for('tasks') }}">
+        <button type="submit" , name="erase" , value="clear_screen">
+          Clear
+        </button>
+        <button type="submit" , name="click" , value="capture">Capture</button>
+        <!-- <input type="button" value="clean" name="clear_btn" /> -->
+      </form>
+    </div>
+  </body>
+</html>

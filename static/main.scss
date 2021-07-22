@@ -1,0 +1,19 @@
+body {
+  margin: 20px;
+  padding: 0;
+}
+.hero {
+  display: block;
+  // margin-left: 15%;
+  .vid-stream {
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+  .btn {
+    margin-left: 18%;
+    position: relative;
+    align-items: center;
+  }
+}
