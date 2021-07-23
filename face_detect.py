@@ -21,7 +21,6 @@ while True:
         face_section = cv2.resize(face_section, (100, 100))
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 255), 2)
 
-    cv2.imshow("face section", face_section)
     cv2.imshow("Faces", frame)
 
     key = cv2.waitKey(1) & 0xFF
