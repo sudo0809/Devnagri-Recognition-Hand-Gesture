@@ -12,11 +12,16 @@ body {
   height: 100%;
 }
 
-.hero .btn {
+.hero form {
   margin-left: 18%;
   position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.hero form button {
+  justify-items: center;
+  font-size: 15px;
 }
 /*# sourceMappingURL=main.css.map */
