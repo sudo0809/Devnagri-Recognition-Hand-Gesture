@@ -1,11 +1,8 @@
 import cv2
-import numpy as np
-from symbols import *
 
 
 def detect_face(frame):
-    face_cascade = cv2.CascadeClassifier(
-        'face_detection/haarcascade_frontalface_alt.xml')
+    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
     faces = face_cascade.detectMultiScale(frame, 1.3, 5)
 
     if (len(faces) == 0):
@@ -29,19 +26,3 @@ def overlayimage(main_img, stable_img):
     imgCanvasCursor = cv2.bitwise_and(main_img, canvasInv)
     imgCanvasCursor = cv2.bitwise_or(imgCanvasCursor, stable_img)
     return imgCanvasCursor
-
-
-def prepare_image(img):
-    dim = (32, 32)  # beacuse we trained the model with this dimention of images
-    # img = cv2.imread(img, cv2.IMREAD_UNCHANGED)
-    resized_img = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
-    resized_img = resized_img[:, :, :3]  # we need only 3 channels
-
-    final_img = resized_img[np.newaxis, ...]  # adding new axis for the model
-    return final_img
-
-
-def get_key(value):
-    for key, val in symbol_map.items():
-        if val == value:
-            return key, letters[value]

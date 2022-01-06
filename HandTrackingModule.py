@@ -6,7 +6,7 @@ tipIds = [4, 8, 12, 16, 20]
 
 
 class handDetector():
-    def __init__(self, mode=False, maxhands=1, detectionCon=0.7, trackCon=0.5):
+    def __init__(self, mode=False, maxhands=2, detectionCon=0.5, trackCon=0.5):
         self.mode = mode
         self.maxhands = maxhands
         self.detectionCon = detectionCon
@@ -85,9 +85,9 @@ def main():
         success, img = cap.read()
         img = detector.findHands(img)
         lmList = detector.findPosition(img)
-        # if len(lmList) != 0:
-        #     print(lmList)
-        #     print()
+        # if len(lmList)!=0:
+        # print(lmList)
+        # print()
         detector.fingersUp()
 
         cTime = time.time()
