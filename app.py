@@ -18,7 +18,7 @@ BLACK = (0, 0, 0)
 app = Flask(__name__)
 camera = cv2.VideoCapture(0)
 detector = htm.handDetector(detectionCon=0.8, trackCon=0.8)
-global erase, capture
+global erase, capture, imgCanvas
 erase = 0
 capture = 0
 
@@ -26,10 +26,10 @@ capture = 0
 def generate_frame():
     xp, yp = 0, 0
     global erase, capture
-    # global imgCanvas
+    global imgCanvas
     imgCanvas = np.zeros((WIDTH, HEIGHT, 3), np.uint8)
     cursor = np.zeros((WIDTH, HEIGHT, 3), np.uint8)
-    print("gen_function again")
+    # print("gen_function again")
 
     while True:
         success, frame = camera.read()
@@ -80,13 +80,6 @@ def generate_frame():
 
         if capture:
             capture = 0
-            # now = "frame_img.png"   # datetime.datetime.now()
-            # path = os.path.sep.join(['shots', "shot_{}.png".format(str(now).replace(":",''))])
-            model = load_model('model\devnagri_model.h5')
-            predict_img = prepare_image(imgCanvas)
-            prediction, letter = get_key(np.argmax(model.predict(predict_img)))
-            print(prediction, letter)
-            # cv2.imwrite(now, imgCanvas)
 
         if erase:
             erase = 0
@@ -94,10 +87,7 @@ def generate_frame():
             imgCanvas = np.zeros((WIDTH, HEIGHT, 3), np.uint8)
 
         frame = cv2.hconcat([frame, final_canvas])
-        # frame = cv2.resize(frame, (50, 50))
-        # final_canvas[0:50, 0:50] = frame
         screen = frame
-        # print("final canvas: ", len(final_canvas), len(final_canvas[0]))
 
         if not success:
             break
@@ -125,6 +115,12 @@ def tasks():
         if request.form.get('click') == 'capture':
             global capture
             capture = 1
+            model = load_model('model\devnagri_model_2.h5')
+            predict_img = prepare_image(imgCanvas)
+            prediction, letter = get_key(np.argmax(model.predict(predict_img)))
+            print(prediction, letter)
+            return render_template('index.html', prediction_text="the letter is {}".format(letter))
+
         if request.form.get('erase') == 'clear_screen':
             global erase
             erase = 1

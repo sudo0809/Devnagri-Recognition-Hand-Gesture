@@ -4,7 +4,8 @@ body {
 }
 
 .hero {
-  display: block;
+  margin-left: 5%;
+  position: absolute;
 }
 
 .hero .vid-stream img {
@@ -23,5 +24,11 @@ body {
 .hero form button {
   justify-items: center;
   font-size: 15px;
+}
+
+.hero .pred_text {
+  position: absolute;
+  margin-left: 45%;
+  font-size: 30px;
 }
 /*# sourceMappingURL=main.css.map */

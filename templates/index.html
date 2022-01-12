@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="/static/main.css" />
   </head>
   <body>
-    <h1>Live Streaming</h1>
     <div class="hero">
+      <h1>Live Streaming</h1>
       <div class="vid-stream">
         <img src="{{ url_for('video') }}" />
       </div>
@@ -20,6 +20,8 @@
         <button type="submit" , name="click" , value="capture">Capture</button>
         <!-- <input type="button" value="clean" name="clear_btn" /> -->
       </form>
+      <br>
+      <h3 class="pred_text">{{ prediction_text }}</h3>
     </div>
   </body>
 </html>

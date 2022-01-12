@@ -3,8 +3,8 @@ body {
   padding: 0;
 }
 .hero {
-  display: block;
-  // margin-left: 15%;
+  margin-left: 5%;
+  position: absolute;
   .vid-stream {
     img {
       width: auto;
@@ -19,5 +19,10 @@ body {
       justify-items: center;
       font-size: 15px;
     }
+  }
+  .pred_text {
+    position: absolute;
+    margin-left: 45%; 
+    font-size: 30px;
   }
 }
